@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'dashboard',
 ]
 
+AUTH_USER_MODEL = 'dashboard.Customer'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',

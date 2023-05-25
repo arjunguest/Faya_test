@@ -88,6 +88,8 @@ class ProductCreateView(APIView):
             return Response({'message': str(e)}, status = status.HTTP_400_BAD_REQUEST)
 
 class ProductListUpdateView(generics.RetrieveUpdateAPIView):
+    authentication_classes = [TokenAuthentication,SessionAuthentication]
+    permission_classes = (IsAuthenticated,)
     queryset = Product.objects.all()
     serializer_class = ProductListSerializer
 
@@ -118,7 +120,8 @@ class ProductListUpdateView(generics.RetrieveUpdateAPIView):
 
 class ProductListView(APIView):
     api_view = ['GET']
-    permission_classes = (AllowAny,)
+    authentication_classes = [TokenAuthentication,SessionAuthentication]
+    permission_classes = (IsAuthenticated,)
     serializer_class = RegisterSerializer
     serializer_class = ProductListSerializer
     
